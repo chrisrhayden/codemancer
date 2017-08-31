@@ -1,0 +1,5 @@
+Django==1.11.4
+greenlet==0.4.12
+msgpack-python==0.4.8
+neovim==0.1.13
+pytz==2017.2
