@@ -1,6 +1,6 @@
 # Readme
 
-[Cap stone proposal](https://github.com/chrisrhayden/codelooker/blob/master/prep.md)
+[Cap stone proposal](https://github.com/chrisrhayden/codemancer/blob/master/docs/prep.md)
 
 
 ### TODO
