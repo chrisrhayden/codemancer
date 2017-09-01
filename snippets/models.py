@@ -45,7 +45,7 @@ class Fourm(models.Model):
 
     author = models.ForeignKey(User, blank=True, null=False)
     created = models.DateTimeField(blank=True, null=False)
-    snipit = models.ForeignKey(Snipit)
+    snippet = models.ForeignKey(Snipit)
 
     class Meta:
         abstract = True

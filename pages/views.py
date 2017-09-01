@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from snippets.models import Snipit
 
 # Create your views here.
 
@@ -18,7 +19,9 @@ def code_pasting(request):
 def list_snippets(request):
     """ a page with all snipts in a list """
 
-    return render(request, 'list_snippets.html')
+    snippets = Snipit.objects.all()
+    context = {'snippets': snippets}
+    return render(request, 'list_snippets.html', context)
 
 
 def about(request):

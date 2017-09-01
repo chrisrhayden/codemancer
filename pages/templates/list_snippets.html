@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block first_block %}
-  <p>list all code snipits</p>
+  <h1>list all code snippets</h1>
+  {% for snip in snippets %}
+    <h2>{{ snip.title }}</h2>
+    <p>{{ snip.code }}</p>
+  {% endfor %}
 {% endblock %}
