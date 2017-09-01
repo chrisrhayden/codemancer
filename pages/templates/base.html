@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  {% load static %}
   <title>{% block title %}{% endblock %}</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,
@@ -10,10 +11,18 @@
   <!-- vendor -->
   {% block vendor %}{% endblock %}
   <!-- my sheet -->
-  <link rel="stylesheet" type="text/css" href="static/style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
 </head>
 
 <body>
+  <header>
+    <h1>Codemancer</h1>
+    <nav>
+      <p>List Snips</p>
+      <p>User</p>
+      <p>About</p>
+    </nav>
+  </header>
 
   {% block first_block %}
   {% endblock %}
@@ -26,6 +35,5 @@
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
   <!-- my sheet -->
-  <script src="static/main.js"></script>
 
 </html>

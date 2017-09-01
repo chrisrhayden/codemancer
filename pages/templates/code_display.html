@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
 {% block first_block  %}
-  <p>code view page</p>
+  <h1>Code Display</h1>
+  <p>{{ snippet.title }}</p>
+  <pre>{{ snippet.code }}</pre>
 {% endblock %}
