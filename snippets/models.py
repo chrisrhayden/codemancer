@@ -23,7 +23,7 @@ class Language(models.Model):
         return f'lang: {self.name} ver: {self.version}'
 
 
-class Snipit(models.Model):
+class Snippet(models.Model):
     """ snip class """
 
     author = models.ForeignKey(User, blank=True, null=True)
@@ -45,7 +45,7 @@ class Fourm(models.Model):
 
     author = models.ForeignKey(User, blank=True, null=False)
     created = models.DateTimeField(blank=True, null=False)
-    snippet = models.ForeignKey(Snipit)
+    snippet = models.ForeignKey(Snippet)
 
     class Meta:
         abstract = True
@@ -57,7 +57,7 @@ class Fourm(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.author
+        return f'{self.author.username} commented on {self.snippet.title}'
 
 
 class Comment(Fourm):

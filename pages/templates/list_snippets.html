@@ -3,7 +3,22 @@
 {% block first_block %}
   <h1>list all code snippets</h1>
   {% for snip in snippets %}
-    <h2>{{ snip.title }}</h2>
-    <p>{{ snip.code }}</p>
+
+    <!-- title -->
+    <h2><a class='title' href='{% url 'code_display' pk=snip.id %}'>
+        {{ snip.title }}</a></h2>
+
+    <!-- author -->
+    {% if snip.author %}
+      <p>Author: {{ snip.author }},
+    {% else %}
+      <p>Author: Anonymous,
+    {% endif %}
+
+    <!-- language -->
+    {% for lang in snip.language.all %}
+      {{ lang }}</p>
+    {% endfor %}
+
   {% endfor %}
 {% endblock %}

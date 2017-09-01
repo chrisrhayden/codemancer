@@ -21,7 +21,7 @@ from pages.views import (
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^display/', view_code, name='code_display'),
+    url(r'^display/(?P<pk>\d+)', view_code, name='code_display'),
     url(r'^login/', login_page, name='login_page'),
     url(r'^pasting/', code_pasting, name='code_pasting'),
     url(r'^list_snips/', list_snippets, name='list_snippets'),

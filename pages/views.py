@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from snippets.models import Snipit
+from django.shortcuts import (render, get_object_or_404)
+from snippets.models import Snippet
 
 # Create your views here.
 
@@ -19,7 +19,7 @@ def code_pasting(request):
 def list_snippets(request):
     """ a page with all snipts in a list """
 
-    snippets = Snipit.objects.all()
+    snippets = Snippet.objects.all()
     context = {'snippets': snippets}
     return render(request, 'list_snippets.html', context)
 
@@ -30,7 +30,12 @@ def about(request):
     return render(request, 'about.html')
 
 
-def view_code(request):
+def view_code(request, pk):
     """ render the code to page """
 
-    return render(request, 'code_display.html')
+    # old code for posterity
+    # snippet = Snippet.objects.get(id=pk)
+
+    snippet = get_object_or_404(Snippet, id=pk)
+    context = {'snippet': snippet}
+    return render(request, 'code_display.html', context)
