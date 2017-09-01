@@ -55,3 +55,7 @@ have annotating tools like an editor with chan like threads.
 * User Snippets
 * User comments and annotation
 * Date of sign up
+
+### Future
+
+* add anonymous user object
