@@ -1,3 +1,24 @@
-h1 {
-    color: green;
+body {
+    background-color: white;
 }
+
+
+header h1 {
+    color: dimgrey;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+h1 {
+    color: grey;
+}
+.code-box {
+    padding-left: 20px;
+    width: 60%;
+}
+

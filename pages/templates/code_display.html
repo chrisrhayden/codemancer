@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block vendor %}
+  <link rel="stylesheet" href="{% static 'pages/css/foundation.css' %}">
+  <script src="{% static 'pages/js/highlight.pack.js' %}"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+
 {% block first_block  %}
   <h1>Code Display</h1>
   <p>{{ snippet.title }}</p>
-  <pre>{{ snippet.code }}</pre>
+  <pre class="code-box"><code class="{{ snippet.language.first.name|lower }}">
+    {{ snippet.code }}</code></pre>
 {% endblock %}

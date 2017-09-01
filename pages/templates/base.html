@@ -9,6 +9,7 @@
   initial-scale=1">
 
   <!-- vendor -->
+  <link rel="stylesheet" type="text/css" href="{% static 'pages/css/normalize.css' %}">
   {% block vendor %}{% endblock %}
   <!-- my sheet -->
   <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
@@ -16,8 +17,10 @@
 
 <body>
   <header>
-    <h1>Codemancer</h1>
-    <nav>
+    <div class="title-header">
+      <h1>Codemancer</h1>
+    </div>
+    <nav class="nav-header">
       <p>List Snips</p>
       <p>User</p>
       <p>About</p>
