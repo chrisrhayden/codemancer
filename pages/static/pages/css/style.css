@@ -1,32 +1,36 @@
-header {
-    grid-area: header;
-}
-
-.nav-header {
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 2;
-    grid-column-end: auto;
-    grid-area: header;
-}
-
-.main {
-    grid-area: main;
-}
-
-
 body {
     display: grid;
     grid-template-rows: 80px 2fr 1fr 40px;
     grid-template-columns: 1fr 3fr;
     grid-template-areas:
-        "header header header"
-        ". main main"
-        ". . ."
-        "footer footer footer";
-    justify-content: start;
+        "header header"
+        "side main"
+        ". main"
+        "footer footer";
 }
 
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.header-nav {
+    list-style: none;
+    justify-self: end;
+}
+
+.side-nav {
+    grid-area: side;
+}
+.side-nav ul {
+    padding: 0;
+    list-style: none;
+}
+
+.main {
+    grid-area: main;
+}
 
 .empty {
     background-color: black;

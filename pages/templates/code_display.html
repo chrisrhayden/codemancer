@@ -8,7 +8,13 @@
   <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
-{% block first_block  %}
+
+{% block first_block %}
+
+{% endblock %}
+
+
+{% block second_block  %}
   <h1>Code Display</h1>
   <p>{{ snippet.title }}</p>
   <pre class="code-box"><code class="{{ snippet.language.first.name|lower }}">
