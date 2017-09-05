@@ -11,6 +11,7 @@ body {
 
     background-color: dimgrey;
     color: white;
+    font-size: 15px;
 }
 
 header {
@@ -66,6 +67,16 @@ header h1 {
 .main a {
     color: black;
     text-decoration: none;
+}
+
+.main h3 {
+    font-size: 16px;
+}
+
+.main p {
+    font-size: 12px;
+    margin: 0 0 0 0;
+    line-height: 0;
 }
 
 .main-box {
