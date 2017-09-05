@@ -7,12 +7,20 @@ body {
         "side main"
         ". main"
         "footer footer";
+
+    background-color: dimgrey;
+    color: white;
 }
 
 header {
     grid-area: header;
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+header h1 {
+    margin: 0 0 0 10px;
+    align-self: center;
 }
 
 .header-nav {
@@ -22,6 +30,7 @@ header {
 
 .side-nav {
     grid-area: side;
+    margin: 0 0 0 15px;
 }
 .side-nav ul {
     padding: 0;
