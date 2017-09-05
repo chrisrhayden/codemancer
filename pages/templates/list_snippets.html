@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block first_block %}
-  <h2>list all code snippets</h2>
+  <h2>All Snippets</h2>
 
   {% for snip in snippets %}
     <!-- title -->
@@ -21,4 +21,12 @@
     {% endfor %}
 
   {% endfor %}
+{% endblock %}
+
+{% block tags %}
+  <ul>
+  {% for l in lang %}
+  <li><a href='#'>{{ l.name }}</a></li>
+  {% endfor %}
+  </ul>
 {% endblock %}

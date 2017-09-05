@@ -1,5 +1,5 @@
 from django.shortcuts import (render, redirect, get_object_or_404)
-from snippets.models import Snippet
+from snippets.models import (Snippet, Language)
 from snippets.forms import SnippetForm
 
 # Create your views here.
@@ -8,7 +8,9 @@ from snippets.forms import SnippetForm
 def login_page(request):
     """ a page to login or sign up """
 
-    return render(request, 'login.html')
+    lang = Language.objects.order_by('name')
+    context = {'lang': lang}
+    return render(request, 'login.html', context)
 
 
 def code_pasting(request):
@@ -28,22 +30,26 @@ def code_pasting(request):
             return redirect('code_display',
                             pk=snip_post.id)
 
-    context = {'form': form}
+    lang = Language.objects.order_by('name')
+    context = {'form': form, 'lang': lang}
     return render(request, 'code_pasting.html', context)
 
 
 def list_snippets(request):
     """ a page with all snipts in a list """
 
+    lang = Language.objects.order_by('name')
     snippets = Snippet.objects.all()
-    context = {'snippets': snippets}
+    context = {'snippets': snippets, 'lang': lang}
     return render(request, 'list_snippets.html', context)
 
 
 def about(request):
     """ show about page """
 
-    return render(request, 'about.html')
+    lang = Language.objects.order_by('name')
+    context = {'lang': lang}
+    return render(request, 'about.html', context)
 
 
 def view_code(request, pk):
@@ -53,5 +59,7 @@ def view_code(request, pk):
     # snippet = Snippet.objects.get(id=pk)
 
     snippet = get_object_or_404(Snippet, id=pk)
-    context = {'snippet': snippet}
+    lang = Language.objects.order_by('name')
+
+    context = {'snippet': snippet, 'lang': lang}
     return render(request, 'code_display.html', context)

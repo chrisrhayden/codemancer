@@ -28,14 +28,11 @@
   </header>
 
   <div class='side-nav'>
-    <p>make better in base</p>
+    <p>Tags</p>
     <ul>
-      <li>tags</li>
-      <li>tags</li>
-      <li>tags</li>
-      <li>tags</li>
-      <li>tags</li>
-      <li>tags</li>
+      {% for l in lang %}
+        <li><a href='#'>{{ l.name }}</a></li>
+      {% endfor %}
     </ul>
   </div><!-- side-nav -->
 

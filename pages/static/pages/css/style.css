@@ -38,15 +38,25 @@ header h1 {
     text-align: right;
 }
 
+.side-nav p {
+    margin: 0 5px 10px 5px;
+}
 .side-nav ul {
     grid-area: side;
     margin: 0 0 0 15px;
     padding: 0;
     list-style: none;
+    line-height: 18px;
+    font-size: 14px;
 }
 
-.side-nav p {
-    margin: 0 5px 10px 5px;
+.side-nav a {
+    color: black;
+    text-decoration: none;
+}
+
+.main h2 {
+    margin: 10px 0 20px 0;
 }
 
 .main {
