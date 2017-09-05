@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block my_style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'pages/css/code_pasting.css' %}">
+{% endblock %}
+
 {% block first_block %}
-  <section class='main'>
     <h2>paste code here</h2>
-    <div class='empty'>
-    </div>
-  </section><!-- main -->
+    {{ form.errors }}
+    <form action='' method='POST'>
+      {% csrf_token %}
+      <label>
+        <p>Title:</p>
+        {{ form.title }}
+      </label>
+      <label>
+        <p>Code Snippet</p>
+        {{ form.code }}
+      </label>
+      <label>
+        <p>Language</p>
+        {{ form.language }}
+      </label>
+
+      <button>Submit</button>
+    </form>
 {% endblock %}

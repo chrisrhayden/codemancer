@@ -29,7 +29,7 @@ class Snippet(models.Model):
     author = models.ForeignKey(User, blank=True, null=True)
     title = models.CharField(max_length=120)
     code = models.TextField()
-    created = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
     language = models.ManyToManyField(Language, related_name='snippets')
 
     def __str__(self):

@@ -1,5 +1,6 @@
-from django.shortcuts import (render, get_object_or_404)
+from django.shortcuts import (render, redirect, get_object_or_404)
 from snippets.models import Snippet
+from snippets.forms import SnippetForm
 
 # Create your views here.
 
@@ -13,7 +14,22 @@ def login_page(request):
 def code_pasting(request):
     """ paste code on this page """
 
-    return render(request, 'code_pasting.html')
+    if request.method == 'GET':
+        form = SnippetForm()
+
+    elif request.method == 'POST':
+        form = SnippetForm(data=request.POST)
+        if form.is_valid():
+            snip_post = form.save(commit=False)  # return instates
+            snip_post.save()                     # now save
+            form.save_m2m()
+            # send to display view (below)
+            # using url related name
+            return redirect('code_display',
+                            pk=snip_post.id)
+
+    context = {'form': form}
+    return render(request, 'code_pasting.html', context)
 
 
 def list_snippets(request):

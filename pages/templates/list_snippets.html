@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block first_block %}
-  <h1>list all code snippets</h1>
-  {% for snip in snippets %}
+  <h2>list all code snippets</h2>
 
+  {% for snip in snippets %}
     <!-- title -->
-    <h2><a class='title' href='{% url 'code_display' pk=snip.id %}'>
-        {{ snip.title }}</a></h2>
+    <h3><a class='title' href='{% url 'code_display' pk=snip.id %}'>
+        {{ snip.title }}</a></h3>
 
     <!-- author -->
     {% if snip.author %}
@@ -17,7 +17,7 @@
 
     <!-- language -->
     {% for lang in snip.language.all %}
-      {{ lang }}</p>
+      Lang: {{ lang.name }}</p>
     {% endfor %}
 
   {% endfor %}

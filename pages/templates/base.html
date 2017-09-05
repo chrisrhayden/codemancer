@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'pages/css/normalize.css' %}">
   {% block vendor %}{% endblock %}
   <!-- my sheet -->
+  {% block my_style %}{% endblock %}
   <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
 </head>
 
@@ -19,9 +20,10 @@
   <header>
     <h1>Codemancer</h1>
     <ul class='header-nav'>
-      <li>List Snips</li>
-      <li>User</li>
-      <li>About</li>
+      <li><a href='http://127.0.0.1:8000/pasting/'>Paste Snippet</a></li>
+      <li><a href='http://127.0.0.1:8000/list_snips/'>List Snips</a></li>
+      <li><a href='#'>User</a></li>
+      <li><a href='#'>About</a></li>
     </ul>
   </header>
 
@@ -37,11 +39,10 @@
     </ul>
   </div><!-- side-nav -->
 
-  {% block first_block %}
-  {% endblock %}
-
-  {% block second_block %}
-  {% endblock %}
+  <section class='main'>
+    {% block first_block %}
+    {% endblock %}
+  </section>
 
 </body>
 

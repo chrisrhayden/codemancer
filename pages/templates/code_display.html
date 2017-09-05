@@ -10,13 +10,8 @@
 
 
 {% block first_block %}
-
-{% endblock %}
-
-
-{% block second_block  %}
-  <h1>Code Display</h1>
+  <h2>Code Display</h2>
   <p>{{ snippet.title }}</p>
-  <pre class="code-box"><code class="{{ snippet.language.first.name|lower }}">
+  <pre class="main-box"><code class="{{ snippet.language.first.name|lower }}">
     {{ snippet.code }}</code></pre>
 {% endblock %}

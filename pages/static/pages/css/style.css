@@ -1,12 +1,13 @@
 body {
     display: grid;
     grid-template-rows: 80px 2fr 1fr 40px;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 110px 3fr;
     grid-template-areas:
         "header header"
         "side main"
         ". main"
         "footer footer";
+    grid-column-gap: 10px;
 
     background-color: dimgrey;
     color: white;
@@ -16,33 +17,48 @@ header {
     grid-area: header;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
 header h1 {
     margin: 0 0 0 10px;
-    align-self: center;
 }
 
 .header-nav {
+    margin: 0 10px 0 0;
     list-style: none;
     justify-self: end;
 }
 
-.side-nav {
+.header-nav a {
+    color: black;
+    text-decoration: none;
+}
+.header-nav li {
+    text-align: right;
+}
+
+.side-nav ul {
     grid-area: side;
     margin: 0 0 0 15px;
-}
-.side-nav ul {
     padding: 0;
     list-style: none;
+}
+
+.side-nav p {
+    margin: 0 5px 10px 5px;
 }
 
 .main {
     grid-area: main;
 }
 
-.empty {
-    background-color: black;
-    width: 500px;
-    height: 500px;
+.main a {
+    color: black;
+    text-decoration: none;
+}
+
+.main-box {
+    width: 90%;
+    max-width: 750px;
 }
