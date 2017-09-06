@@ -48,7 +48,6 @@ header h1 {
     padding: 0;
     list-style: none;
     line-height: 18px;
-    font-size: 14px;
 }
 
 .side-nav a {
@@ -69,12 +68,8 @@ header h1 {
     text-decoration: none;
 }
 
-.main h3 {
-    font-size: 16px;
-}
 
 .main p {
-    font-size: 12px;
     margin: 0 0 0 0;
     line-height: 0;
 }
