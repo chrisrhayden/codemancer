@@ -4,12 +4,17 @@
 
 
 .a-snip {
-    float: left;
-    margin: 10px;
-    width: 45%;
     background-color: white;
-    border-radius: 2px;
+    margin: 10px;
+    height: auto;
+    width: 40%;
     color: black;
-    padding: 0 0 10px 10px;
+    border-radius: 2px;
+    /* padding: 0 0 15px 15px; */
 }
 
+.snippet-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

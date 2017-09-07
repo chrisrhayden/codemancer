@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block first_block %}
+  <form>
+    {% csrf_token %}
+    <h3>{{ name }}</h3>
+    {{ form.as_p }}
+    <button>Resubmit</button>
+  </form>
+{% endblock %}

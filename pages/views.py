@@ -1,4 +1,6 @@
-from django.shortcuts import (render, redirect, get_object_or_404)
+from django.shortcuts import (
+        render, redirect,
+        get_object_or_404)
 from snippets.models import (Snippet, Language)
 from snippets.forms import SnippetForm
 
@@ -52,7 +54,7 @@ def about(request):
     return render(request, 'about.html', context)
 
 
-def view_code(request, pk):
+def snippet_detail(request, pk):
     """ render the code to page """
 
     # old code for posterity
@@ -63,3 +65,21 @@ def view_code(request, pk):
 
     context = {'snippet': snippet, 'lang': lang}
     return render(request, 'code_display.html', context)
+
+
+def snippet_change(request, pk):
+    """ crud, update snippet """
+
+    s = Snippet.objects.get(id=pk)
+
+    if request.method == 'GET':
+        form = SnippetForm(instance=s)
+    elif request.method == 'POST':
+        form = SnippetForm(instates=s, data=request.POST)
+        if form.is_valid():
+            update_snip = form.save(commit=False)
+            update_snip.save()
+
+    s_name = s.title
+    context = {'form': form, 'name': s_name}
+    return render(request, 'snippet_change.html', context)

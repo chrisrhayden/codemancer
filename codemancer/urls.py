@@ -16,14 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from pages.views import (
-        view_code, login_page, code_pasting, list_snippets, about)
+        snippet_detail, login_page, code_pasting,
+        list_snippets, snippet_change, about)
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^display/(?P<pk>\d+)', view_code, name='code_display'),
+    url(r'^display/(?P<pk>\d+)', snippet_detail, name='code_display'),
     url(r'^login/', login_page, name='login_page'),
     url(r'^pasting/', code_pasting, name='code_pasting'),
     url(r'^list_snips/', list_snippets, name='list_snippets'),
+    url(r'^snippet/change/(?P<pk>\d+)', snippet_change, name='snippet_change'),
     url(r'^about/', about, name='about'),
 ]

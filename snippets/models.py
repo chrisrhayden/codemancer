@@ -61,13 +61,19 @@ class Fourm(models.Model):
 
 
 class Comment(Fourm):
-    """ only for plane text in comments """
+    """ only for plane text in comments
+
+    Inherits from Fourm
+    """
 
     text = models.TextField()
 
 
 class Annotation(Fourm):
-    """ only for annotations on the form of code """
+    """ only for annotations on the form of code
+
+    Inherits from Fourm
+    """
 
     code = models.TextField()
     line_begin = models.PositiveSmallIntegerField()

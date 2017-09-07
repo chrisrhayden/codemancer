@@ -3,30 +3,24 @@
 {% load static %}
 
 {% block my_style %}
-<link rel="stylesheet" type="text/css" href="{% static 'pages/css/list_snippets.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'pages/css/list_snippets.css' %}">
 {% endblock %}
 
 {% block first_block %}
   <h2 class='page-tittle'>All Snippets</h2>
 
   {% for snip in snippets %}
-    <div class='a-snip'><a class='title' href='{% url 'code_display' pk=snip.id %}'>
-      <!-- title -->
-      <h3>
-          {{ snip.title }}</h3>
+    <div class='a-snip'>
+      <a class='title' href='{% url 'code_display' pk=snip.id %}'>
+          <!-- title -->
+          <h3>{{ snip.title }}</h3>
 
-      <!-- author -->
-      {% if snip.author %}
-        <p>Author: {{ snip.author }},
-      {% else %}
-        <p>Author: Anonymous,
-      {% endif %}
-
-      <!-- language -->
-      {% for lang in snip.language.all %}
-        Lang: {{ lang.name }}</p>
-      {% endfor %}
-    </a></div>
+          <!-- author -->
+          {% if snip.author %}
+            <p>{{ snip.author }} {{ lang.name }}</p>
+          {% endif %}
+      </a>
+    </div>
   {% endfor %}
 {% endblock %}
 

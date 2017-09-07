@@ -1,7 +1,7 @@
 body {
     display: grid;
     grid-template-rows: 80px 2fr 1fr 40px;
-    grid-template-columns: 110px 3fr;
+    grid-template-columns: 140px 3fr;
     grid-template-areas:
         "header header"
         "side main"
@@ -68,11 +68,6 @@ header h1 {
     text-decoration: none;
 }
 
-
-.main p {
-    margin: 0 0 0 0;
-    line-height: 0;
-}
 
 .main-box {
     width: 90%;
