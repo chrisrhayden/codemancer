@@ -16,6 +16,15 @@
     <p>Annotating code</p>
   </div>
 
+  <div class='white-object'>
+    {% if comment.author %}
+      <h3>{{ comment.author }}</h3>
+    {% else %}
+      <h3>anon</h3>
+    {% endif %}
+    <p>{{ comment.text  }}</p>
+  </div>
+
 {% endblock %}
 
 

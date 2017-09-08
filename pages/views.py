@@ -10,9 +10,14 @@ from snippets.forms import (SnippetForm, CommentForm)
 def landing_page(request):
 
     latest = Snippet.objects.latest('created')
+    comment = Comment.objects.filter(snippet=latest).latest('created')
     lang = Language.objects.all()
 
-    context = {'latest': latest, 'lang': lang}
+    context = {
+            'latest': latest,
+            'lang': lang,
+            'comment': comment
+    }
     return render(request, 'landing_page.html', context)
 
 
