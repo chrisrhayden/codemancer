@@ -11,7 +11,7 @@
 
   {% for snip in snippets %}
     <div class='a-snip'>
-      <a class='title' href='{% url 'code_display' pk=snip.id %}'>
+      <a class='title' href='{% url 'snippet_detail' pk=snip.id %}'>
           <!-- title -->
           <h3>{{ snip.title }}</h3>
 

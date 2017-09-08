@@ -43,7 +43,7 @@ class Fourm(models.Model):
     and annotations
     """
 
-    author = models.ForeignKey(User, blank=True, null=False)
+    author = models.ForeignKey(User, blank=True, null=True)
     created = models.DateTimeField(blank=True, null=False)
     snippet = models.ForeignKey(Snippet)
 

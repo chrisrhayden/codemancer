@@ -1,8 +1,8 @@
 from django.shortcuts import (
         render, redirect,
         get_object_or_404)
-from snippets.models import (Snippet, Language)
-from snippets.forms import SnippetForm
+from snippets.models import (Snippet, Language, Comment)
+from snippets.forms import (SnippetForm, CommentForm)
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ def login_page(request):
     return render(request, 'login.html', context)
 
 
-def code_pasting(request):
+def create_snippet(request):
     """ paste code on this page """
 
     if request.method == 'GET':
@@ -29,12 +29,12 @@ def code_pasting(request):
             form.save_m2m()
             # send to display view (below)
             # using url related name
-            return redirect('code_display',
+            return redirect('snippet_detail',
                             pk=snip_post.id)
 
     lang = Language.objects.order_by('name')
     context = {'form': form, 'lang': lang}
-    return render(request, 'code_pasting.html', context)
+    return render(request, 'create.html', context)
 
 
 def list_snippets(request):
@@ -55,16 +55,33 @@ def about(request):
 
 
 def snippet_detail(request, pk):
-    """ render the code to page """
+    """ render the code to page
+
+    Show code and add comments
+    """
 
     # old code for posterity
     # snippet = Snippet.objects.get(id=pk)
 
     snippet = get_object_or_404(Snippet, id=pk)
     lang = Language.objects.order_by('name')
+    comments = Comment.objects.filter(snippet=snippet)
 
-    context = {'snippet': snippet, 'lang': lang}
-    return render(request, 'code_display.html', context)
+    if request.method == 'POST':
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.snippet = snippet
+            new_comment.save()
+
+    form = CommentForm()
+    context = {
+            'snippet': snippet,
+            'lang': lang,
+            'form': form,
+            'comments': comments
+    }
+    return render(request, 'detail.html', context)
 
 
 def snippet_change(request, pk):

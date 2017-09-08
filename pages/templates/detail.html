@@ -15,3 +15,27 @@
   <pre class="main-box"><code class="{{ snippet.language.first.name|lower }}">
     {{ snippet.code }}</code></pre>
 {% endblock %}
+
+{% block second_block %}
+  <h3>add a comment</h3>
+  <form action='' method='POST'>
+    {% csrf_token %}
+
+    {{ form.text }}
+    <p></p><button>Submit</button></p>
+
+    <h2>Comments</h2>
+    <div class='comments'>
+    {% for c in comments %}
+        {% if c.author %}
+          <p>{{ c.author }}</p>
+        {% else %}
+          <p>anon
+        {% endif %}
+          said</p>
+
+        <p>{{ c.text }}</p>
+    {% endfor %}
+    </div>
+  </form>
+{% endblock %}
