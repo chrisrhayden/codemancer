@@ -6,7 +6,7 @@ body {
     grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: auto auto 2fr;
     grid-template-areas:
-        "header header header"
+        "header header nav"
         "main main main"
         "tags snip snip"
 }
@@ -16,13 +16,40 @@ header {
     background-color: white;
     color: black;
 
+    font-size: 1.3em;
+
     grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.sid-tags {
+header li {
+    margin: 0 10px 0 0;
+    list-style: none;
+    text-align: right;
+}
+
+.header-nav {
+    background-color: white;
+    grid-area: nav;
+    justify-items: end;
+}
+
+.side-tags {
     grid-area: tags;
 }
 
+.side-tags ul {
+    padding: 0 0 0 10px;
+    list-style: none;
+
+    line-height: 25px;
+}
+.side-tags a {
+    color: white;
+    text-decoration: none;
+}
 
 .main {
     grid-area: main;
@@ -41,6 +68,7 @@ header {
 
     width: 50%;
     height: 180px;
+    border-radius: 2px;
 
     margin: 20px 20px 0 0;
 
@@ -57,4 +85,9 @@ header {
 
 .code-snip {
     grid-area: snip;
+
+    margin: 0 20px 0 0;
+}
+.code-snip code {
+    border-radius: 2px;
 }

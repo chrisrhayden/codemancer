@@ -12,11 +12,13 @@ def landing_page(request):
     latest = Snippet.objects.latest('created')
     comment = Comment.objects.filter(snippet=latest).latest('created')
     lang = Language.objects.all()
+    tags = Language.objects.all()
 
     context = {
             'latest': latest,
             'lang': lang,
-            'comment': comment
+            'comment': comment,
+            'tags': tags
     }
     return render(request, 'landing_page.html', context)
 
