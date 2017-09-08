@@ -40,7 +40,13 @@
 
   <div class='code-snip'>
     <h2>Most recent snippet</h2>
-    <pre><code>{{ latest.code }}</code></pre>
+    <table>
+    {% for line in code_lines %}
+      <tr><td><pre>
+        <code class='code-line'>{{ line }}</code>
+      </pre></td></tr>
+    {% endfor %}
+    </table>
   </div>
 
 {% endblock %}

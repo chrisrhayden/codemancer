@@ -23,9 +23,34 @@
 .code-snip {
     grid-area: snip;
 
+    color: black;
+    background-color: #EEEEEE;
+
+    height: 100%;
     margin: 0 20px 0 0;
 }
 
 .code-snip code {
-    border-radius: 2px;
+    padding: 3px;
+}
+
+table {
+    counter-reset: rowNumber;
+}
+
+table tr {
+    counter-increment: rowNumber;
+}
+
+table pre {
+    margin: 0;
+}
+
+table tr td pre {
+    height: 20px;
+}
+table code:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
 }

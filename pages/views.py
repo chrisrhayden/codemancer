@@ -9,16 +9,23 @@ from snippets.forms import (SnippetForm, CommentForm)
 
 def landing_page(request):
 
-    latest = Snippet.objects.latest('created')
-    comment = Comment.objects.filter(snippet=latest).latest('created')
     lang = Language.objects.all()
     tags = Language.objects.all()
+
+    latest = Snippet.objects.latest('created')
+    comment = Comment.objects.filter(snippet=latest)
+
+    if comment:
+        comment = comment.latest('created')
+
+    code_lines = latest.code.split('\n')
 
     context = {
             'latest': latest,
             'lang': lang,
             'comment': comment,
-            'tags': tags
+            'tags': tags,
+            'code_lines': code_lines,
     }
     return render(request, 'landing_page.html', context)
 
@@ -95,7 +102,7 @@ def snippet_detail(request, pk):
             'snippet': snippet,
             'lang': lang,
             'form': form,
-            'comments': comments
+            'comments': comments,
     }
     return render(request, 'detail.html', context)
 
