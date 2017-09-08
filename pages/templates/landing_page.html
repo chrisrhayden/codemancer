@@ -8,12 +8,20 @@
   <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
+{% block my_style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'pages/css/landing.css' %}">
+{% endblock %}
+
 {% block first_block %}
   <div class='landing-text'>
     <h2>Landing Page</h2>
     <p>This is a site to review code.</p>
+    <p>what else do i put here, lol</p>
     <h3>Coming Soon</h3>
-    <p>Annotating code</p>
+    <ul>
+      <li>Commenting</li>
+      <li>Annotating code</li>
+    </ul>
   </div>
 
   <div class='white-object'>

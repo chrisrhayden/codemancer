@@ -1,0 +1,31 @@
+.white-object {
+    background-color: white;
+    color: black;
+    padding: 0 0 0 10px;
+
+    width: 50%;
+    height: 180px;
+    border-radius: 2px;
+
+    margin: 20px 20px 0 0;
+
+    grid-area: main;
+}
+
+.white-object h3 {
+    margin: 0;
+}
+
+.second-section {
+    grid-area: snip;
+}
+
+.code-snip {
+    grid-area: snip;
+
+    margin: 0 20px 0 0;
+}
+
+.code-snip code {
+    border-radius: 2px;
+}
