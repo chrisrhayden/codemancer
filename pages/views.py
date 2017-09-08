@@ -1,10 +1,18 @@
 from django.shortcuts import (
         render, redirect,
         get_object_or_404)
+from rest_framework import viewsets
 from snippets.models import (Snippet, Language, Comment)
 from snippets.forms import (SnippetForm, CommentForm)
+from snippets.serializers import LanguageSerializer
 
 # Create your views here.
+
+
+class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
+
+    queryset = Language.objects.all().order_by('name')
+    serializer_class = LanguageSerializer
 
 
 def login_page(request):
@@ -40,9 +48,8 @@ def create_snippet(request):
 def list_snippets(request):
     """ a page with all snipts in a list """
 
-    lang = Language.objects.order_by('name')
     snippets = Snippet.objects.all()
-    context = {'snippets': snippets, 'lang': lang}
+    context = {'snippets': snippets}
     return render(request, 'list_snippets.html', context)
 
 
