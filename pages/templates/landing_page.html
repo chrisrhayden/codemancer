@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block vendor %}
+  <link rel="stylesheet" href="{% static 'pages/css/foundation.css' %}">
+  <script src="{% static 'pages/js/highlight.pack.js' %}"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+
+{% block first_block %}
+  <div class='landing-text'>
+    <h2>Landing Page</h2>
+    <p>This is a site to review code.</p>
+    <h3>Coming Soon</h3>
+    <p>Annotating code</p>
+  </div>
+
+{% endblock %}
+
+
+{% block second_block %}
+
+  <div class='code-snip'>
+    <h2>Most recent snippet</h2>
+    <pre><code>{{ latest.code }}</code></pre>
+  </div>
+
+{% endblock %}
+
+

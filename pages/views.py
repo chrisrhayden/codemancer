@@ -7,6 +7,15 @@ from snippets.forms import (SnippetForm, CommentForm)
 # Create your views here.
 
 
+def landing_page(request):
+
+    latest = Snippet.objects.latest('created')
+    lang = Language.objects.all()
+
+    context = {'latest': latest, 'lang': lang}
+    return render(request, 'landing_page.html', context)
+
+
 def login_page(request):
     """ a page to login or sign up """
 

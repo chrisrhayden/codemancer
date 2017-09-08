@@ -17,12 +17,13 @@ from django.conf.urls import url
 from django.contrib import admin
 from pages.views import (
         snippet_detail, login_page, create_snippet,
-        list_snippets, snippet_change, about)
+        list_snippets, snippet_change, about, landing_page)
 
 # create
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^display/(?P<pk>\d+)', snippet_detail, name='snippet_detail'),
+    url(r'^$', landing_page, name='landing_page'),
+    url(r'^detail/(?P<pk>\d+)', snippet_detail, name='snippet_detail'),
     url(r'^login/', login_page, name='login_page'),
     url(r'^pasting/', create_snippet, name='create_snippet'),
     url(r'^list_snips/', list_snippets, name='list_snippets'),
