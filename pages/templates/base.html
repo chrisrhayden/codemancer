@@ -29,22 +29,25 @@
 
   </header>
 
+
+  <section class='main'>
+    {% block first_block %}
+    {% endblock %}
+
+    {% block second_block %}
+    {% endblock %}
+  </section>
+
+  <section class='second-section'>
+    {% block other_content %}
+    {% endblock %}
+  </section>
+
   <div class='side-tags'>
     <p>Tags</p>
     <ul class='ul-tags'>
     </ul>
   </div><!-- side-nav -->
-
-
-  <section class='main'>
-    {% block first_block %}
-    {% endblock %}
-  </section>
-
-  <section class='second-section'>
-    {% block second_block %}
-    {% endblock %}
-  </section>
 
 
   <!-- vendor -->

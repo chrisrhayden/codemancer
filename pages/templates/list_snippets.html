@@ -7,6 +7,8 @@
 {% endblock %}
 
 {% block first_block %}
+
+
   <h2 class='page-tittle'>All Snippets</h2>
 
   {% for snip in snippets %}
@@ -22,12 +24,4 @@
       </a>
     </div>
   {% endfor %}
-{% endblock %}
-
-{% block tags %}
-  <ul>
-  {% for l in lang %}
-  <li><a href='#'>{{ l.name }}</a></li>
-  {% endfor %}
-  </ul>
 {% endblock %}

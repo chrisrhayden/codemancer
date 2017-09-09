@@ -1,6 +1,14 @@
 
 
 
+.main {
+    grid-area: main;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
 
 
 .a-snip {

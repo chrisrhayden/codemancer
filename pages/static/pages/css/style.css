@@ -4,11 +4,10 @@ body {
 
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
-    grid-template-rows: auto auto 2fr;
+    grid-template-rows: auto auto;
     grid-template-areas:
         "header header header"
-        "main main main"
-        "tags snip snip"
+        "tags main main"
 }
 
 
@@ -51,20 +50,4 @@ header a {
     padding: 0;
     list-style: none;
 }
-
-.main {
-    margin: 0 0 0 10px;
-
-    grid-area: main;
-
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.main h2 {
-    margin: 10px 0 20px 0;
-}
-
 
