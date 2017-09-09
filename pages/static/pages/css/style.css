@@ -40,9 +40,24 @@ header li {
     grid-area: tags;
 }
 
+<<<<<<< HEAD
 .side-tags ul {
     padding: 0 0 0 10px;
     list-style: none;
+=======
+.side-tags {
+    margin: 10px;
+}
+
+.ul-tags {
+    padding: 0;
+    list-style: none;
+}
+
+.main h2 {
+    margin: 10px 0 20px 0;
+}
+>>>>>>> origin/rest
 
     line-height: 25px;
 }

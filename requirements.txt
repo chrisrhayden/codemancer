@@ -1,4 +1,5 @@
 Django==1.11.4
+djangorestframework==3.6.4
 greenlet==0.4.12
 msgpack-python==0.4.8
 neovim==0.1.13
