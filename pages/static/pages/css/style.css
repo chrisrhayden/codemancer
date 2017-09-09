@@ -6,7 +6,7 @@ body {
     grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: auto auto 2fr;
     grid-template-areas:
-        "header header nav"
+        "header header header"
         "main main main"
         "tags snip snip"
 }
@@ -30,23 +30,21 @@ header li {
     text-align: right;
 }
 
-.header-nav {
-    background-color: white;
-    grid-area: nav;
-    justify-items: end;
+header a {
+    text-decoration: none;
+    color: black;
 }
 
+
 .side-tags {
+    margin: 0 0 0 10px;
+
     grid-area: tags;
+
 }
 
-<<<<<<< HEAD
-.side-tags ul {
-    padding: 0 0 0 10px;
-    list-style: none;
-=======
-.side-tags {
-    margin: 10px;
+.side-tags a {
+    text-decoration: none;
 }
 
 .ul-tags {
@@ -54,24 +52,19 @@ header li {
     list-style: none;
 }
 
-.main h2 {
-    margin: 10px 0 20px 0;
-}
->>>>>>> origin/rest
-
-    line-height: 25px;
-}
-.side-tags a {
-    color: white;
-    text-decoration: none;
-}
-
 .main {
+    margin: 0 0 0 10px;
+
     grid-area: main;
 
     display: flex;
-
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
 }
+
+.main h2 {
+    margin: 10px 0 20px 0;
+}
+
+

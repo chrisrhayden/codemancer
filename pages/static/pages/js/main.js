@@ -1,13 +1,15 @@
 'use strict';
 
 function makeTags(tag) {
-    /*
-    let $li = $('li');
-    let $a = $('a').attr({href: '#'}).text(tag);
+    // let str = '<li><a href="#">' + tag + '</a></li>';
+
+    let $li = $('<li>');
+    let $a = $('<a>').text(tag).css({
+        'color': 'white',
+        'text-decoration': 'none',
+    });
     let made_tag = $li.append($a);
-    */
-    let str = '<li><a href="#">' + tag + '</a></li>';
-    return str;
+    return made_tag;
 }
 
 
