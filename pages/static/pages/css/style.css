@@ -1,53 +1,38 @@
 body {
-    background-color: black;
-    color: white;
-
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
-    grid-template-rows: auto auto;
+
+    grid-template-columns: 160px auto;
     grid-template-areas:
-        "header header header"
-        "tags main main"
+        "side head"
+        "side main"
 }
 
 
-header {
-    background-color: white;
+.side-tags {
+    position: fixed;
+
+}
+
+.side-tags li {
     color: black;
 
-    font-size: 1.3em;
+}
 
-    grid-area: header;
+header {
+    grid-area: head;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-header li {
-    margin: 0 10px 0 0;
-    list-style: none;
-    text-align: right;
+
+.black-object {
+    background-color: black;
+    width: 50%;
+    height: 30px;
 }
 
-header a {
-    text-decoration: none;
-    color: black;
+.main {
+    grid-area: main;
 }
-
-
-.side-tags {
-    margin: 0 0 0 10px;
-
-    grid-area: tags;
-
-}
-
-.side-tags a {
-    text-decoration: none;
-}
-
-.ul-tags {
-    padding: 0;
-    list-style: none;
-}
-

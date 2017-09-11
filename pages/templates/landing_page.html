@@ -7,9 +7,10 @@
   <script src="{% static 'pages/js/highlight.pack.js' %}"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
-
 {% block my_style %}
+<!--
   <link rel="stylesheet" type="text/css" href="{% static 'pages/css/landing.css' %}">
+-->
 {% endblock %}
 
 
@@ -26,7 +27,7 @@
     </ul>
   </div>
 
-  <div class='white-object'>
+  <div class='black-object'>
     {% if comment.author %}
       <h3>{{ comment.author }}</h3>
     {% else %}
@@ -42,17 +43,7 @@
 
   <div class='code-snip'>
     <h2>Most recent snippet</h2>
-    <table>
-    {% for line in code_lines %}
-      <tr><td><pre>
-        <code class='code-line'>{{ line }}</code>
-      </pre></td></tr>
-    {% endfor %}
-    </table>
+    <pre><code class='code-line'>{{ code_lines }}</code></pre>
   </div>
 
-{% endblock %}
-
-
-{% block other_content %}
 {% endblock %}

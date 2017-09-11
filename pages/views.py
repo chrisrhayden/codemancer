@@ -10,9 +10,7 @@ from snippets.serializers import LanguageSerializer
 
 
 def landing_page(request):
-
-    lang = Language.objects.all()
-    tags = Language.objects.all()
+    """ get the latest snippet and its comment """
 
     latest = Snippet.objects.latest('created')
     comment = Comment.objects.filter(snippet=latest)
@@ -20,16 +18,15 @@ def landing_page(request):
     if comment:
         comment = comment.latest('created')
 
-    code_lines = latest.code.split('\n')
+    code_lines = latest.code
 
     context = {
             'latest': latest,
-            'lang': lang,
             'comment': comment,
-            'tags': tags,
             'code_lines': code_lines,
     }
     return render(request, 'landing_page.html', context)
+
 
 class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
 

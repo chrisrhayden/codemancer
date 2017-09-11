@@ -5,7 +5,7 @@ function makeTags(tag) {
 
     let $li = $('<li>');
     let $a = $('<a>').text(tag).css({
-        'color': 'white',
+        'color': 'black',
         'text-decoration': 'none',
     });
     let made_tag = $li.append($a);
