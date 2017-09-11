@@ -15,4 +15,10 @@ class TestSnippet:
         data = {'author': None}
         form = SnippetForm(data=data)
 
-        assert form.is_valid() is True, 'Author is invalid'
+        assert form.is_valid() is False, 'Text given to author'
+
+        data = {'title': 'this is a title'}
+        form = SnippetForm(data=data)
+
+        print(form.errors)
+        assert form.is_valid() is True, 'Bad data or nothing wased passed to title'
