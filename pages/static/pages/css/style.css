@@ -1,34 +1,53 @@
 body {
     display: grid;
 
-    grid-template-columns: 160px auto;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto auto;
     grid-template-areas:
-        "side head"
         "side main"
-}
-
-
-aside {
-    position: fixed;
+        "side main";
 
 }
 
-aside li {
-    color: black;
-
-}
 
 header {
-    grid-area: head;
+    position: fixed;
+
+    background-color: white;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column;
+
+    border-right: 2px solid black;
 }
 
 
-.black-object {
-    background-color: black;
-    width: 50%;
-    height: 30px;
+nav {
+    display: fixed;
+    top: 10px;
+
+    justify-content: flex-start;
 }
 
-.main {
-    grid-area: main;
+.tag-title,
+header ul {
+    color: black;
+    margin: 0 10px 0 20px;
+
+    list-style: none;
+    text-align: right;
+
+}
+
+header li a {
+    color: black;
+}
+
+
+.head-title {
+    margin: 5px 0 0 0;
+    position: fixed;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
 }

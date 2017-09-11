@@ -17,11 +17,26 @@
 
 <body>
   <header>
-    <h1>Codemancer</h1>
+    <h1 class='head-title'>CODEMANCER</h1>
+    <nav class='header-nav'>
+      <ul>
+        <li><a href='http://127.0.0.1:8000/pasting/'>Paste Snippet</a></li>
+        <li><a href='http://127.0.0.1:8000/list_snips/'>List Snips</a></li>
+        <li><a href='#'>User</a></li>
+        <li><a href='#'>About</a></li>
+      </ul>
+    </nav>
+
+
+    <p class='tag-title'>Tags</p>
+    <ul class='ul-tags'>
+    </ul>
+
+    <button>Slide</button>
   </header>
 
-
-  <section class='main'>
+  <!-- first -->
+  <section class='first-section'>
     {% block first_block %}
     {% endblock %}
 
@@ -34,20 +49,6 @@
     {% endblock %}
   </section>
 
-  <aside>
-    <nav class='header-nav'>
-      <ul>
-        <li><a href='http://127.0.0.1:8000/pasting/'>Paste Snippet</a></li>
-        <li><a href='http://127.0.0.1:8000/list_snips/'>List Snips</a></li>
-        <li><a href='#'>User</a></li>
-        <li><a href='#'>About</a></li>
-      </ul>
-    </nav>
-    <p>Tags</p>
-    <ul class='ul-tags'>
-    </ul>
-
-  </aside>
 
 
   <!-- vendor -->
