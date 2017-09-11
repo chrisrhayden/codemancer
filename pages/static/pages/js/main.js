@@ -12,6 +12,20 @@ function makeTags(tag) {
     return made_tag;
 }
 
+function navSlide() {
+    // make na
+    let $button = $('.slide');
+    let state = $.data($button, 'state');
+
+    $('.slide').on('click', function() {
+        alert(state);
+        if (state === 'out') {
+            $('header').css({
+                'display': 'none'
+            });
+        }
+    });
+}
 
 $(document).ready(function() {
     $.ajax({
@@ -28,4 +42,6 @@ $(document).ready(function() {
             alert(err);
         }
     });
+
+    navSlide();
 });

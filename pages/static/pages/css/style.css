@@ -51,3 +51,10 @@ header li a {
     writing-mode: vertical-lr;
     text-orientation: upright;
 }
+
+
+
+.slide {
+    position: fixed;
+    bottom: 5px;
+}
