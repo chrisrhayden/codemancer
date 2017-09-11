@@ -8,22 +8,18 @@ body {
 }
 
 
-.side-tags {
+aside {
     position: fixed;
 
 }
 
-.side-tags li {
+aside li {
     color: black;
 
 }
 
 header {
     grid-area: head;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 
