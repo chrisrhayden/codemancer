@@ -31,7 +31,9 @@ def landing_page(request):
     }
     return render(request, 'landing_page.html', context)
 
+
 class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
+    """ for api """
 
     queryset = Language.objects.all().order_by('name')
     serializer_class = LanguageSerializer
