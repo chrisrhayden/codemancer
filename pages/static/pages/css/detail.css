@@ -1,19 +1,16 @@
 .first-section {
     grid-area: main;
+
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        'snip'
+        'com'
 }
-
-.number-span {
-    display: inline;
-
-    color: black;
-}
-
-.hljs {
-    display: inline;
-}
-
 
 .code-snip {
+    grid-area: snip;
+
     background-color: #232323;
     color: white;
 
@@ -22,5 +19,10 @@
 }
 
 .number-span {
+    display: inline;
     color: white;
+}
+
+.hljs {
+    display: inline;
 }

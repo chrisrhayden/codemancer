@@ -13,8 +13,8 @@
 
 
 {% block first_block %}
-  <h2>Code Display</h2>
   <div class='code-snip'>
+    <h2 class='page-title'>Code Display</h2>
     <h3>{{ snippet.title }}</h3>
     {% for line in code_lines %}
       <pre><span class='number-span'>{{ forloop.counter|stringformat:"02d" }}</span><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
@@ -24,8 +24,8 @@
 {% endblock %}
 
 {% block second_block %}
-  <h3>add a comment</h3>
   <form action='' method='POST'>
+    <h3>add a comment</h3>
     {% csrf_token %}
 
     {{ form.text }}
