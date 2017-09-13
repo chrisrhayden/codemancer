@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block vendor %}
-  <link rel="stylesheet" href="{% static 'pages/css/foundation.css' %}">
+  <link rel="stylesheet" href="{% static 'pages/css/railscasts.css' %}">
   <script src="{% static 'pages/js/highlight.pack.js' %}"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
@@ -26,10 +26,14 @@
       </ul>
     </div>
     <div class='black-object'>
-      {% if comment.author %}
-        <h3>{{ comment.author }}</h3>
+      {% if comment_form %}
+        {{ comment_form.text }}
       {% else %}
-        <h3>anon</h3>
+        {% if comment.author %}
+          <h3>{{ comment.author }}</h3>
+        {% else %}
+          <h3>anon</h3>
+        {% endif %}
       {% endif %}
       <p>{{ comment.text  }}</p>
     </div>

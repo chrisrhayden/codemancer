@@ -3,7 +3,7 @@ from django.shortcuts import (
         get_object_or_404)
 from rest_framework import viewsets
 from snippets.models import (Snippet, Language, Comment)
-from snippets.forms import (SnippetForm, CommentForm)
+from snippets.forms import (SnippetForm, CommentForm, AnnotationForm)
 from snippets.serializers import LanguageSerializer
 
 # Create your views here.
@@ -14,17 +14,25 @@ def landing_page(request):
 
     latest = Snippet.objects.latest('created')
     comment = Comment.objects.filter(snippet=latest)
+    code_lines = latest.code.split('\n')
+
 
     if comment:
         comment = comment.latest('created')
+        context = {
+                'latest': latest,
+                'comment': comment,
+                'code_lines': code_lines,
+        }
+    else:
+        comment_form = CommentForm()
+        context = {
+                'latest': latest,
+                'code_lines': code_lines,
+                'comment_form': comment_form,
+        }
 
-    code_lines = latest.code.split('\n')
 
-    context = {
-            'latest': latest,
-            'comment': comment,
-            'code_lines': code_lines,
-    }
     return render(request, 'landing_page.html', context)
 
 
@@ -103,10 +111,17 @@ def snippet_detail(request, pk):
             new_comment.save()
 
     form = CommentForm()
+    ano_form = AnnotationForm()
+    code_lines = snippet.code.split('\n')
+
+
+
     context = {
             'snippet': snippet,
+            'code_lines': code_lines,
             'lang': lang,
             'form': form,
+            'ano_form': ano_form,
             'comments': comments,
     }
     return render(request, 'detail.html', context)

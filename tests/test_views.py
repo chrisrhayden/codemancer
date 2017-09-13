@@ -17,12 +17,17 @@ class TestLandingPage:
 
         com_data = {'author': None, 'created': timezone.now(),
                     'snippet': obj, 'text': 'this is text'}
-        c = Comment.objects.create(**com_data)
 
         request = RequestFactory().get('/')
         response = landing_page(request)
 
         patt = re.compile(r'[45]\d+')
+        assert patt.match(str(response.status_code)) is None, 'landing_page not calling'
+
+        assert response.status_code == 200, 'not calling'
+
+        c = Comment.objects.create(**com_data)
+        response = landing_page(request)
         assert patt.match(str(response.status_code)) is None, 'landing_page not calling'
 
         assert response.status_code == 200, 'not calling'

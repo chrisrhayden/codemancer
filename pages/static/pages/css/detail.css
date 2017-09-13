@@ -1,0 +1,26 @@
+.first-section {
+    grid-area: main;
+}
+
+.number-span {
+    display: inline;
+
+    color: black;
+}
+
+.hljs {
+    display: inline;
+}
+
+
+.code-snip {
+    background-color: #232323;
+    color: white;
+
+    padding: 10px;
+    max-width: 700px;
+}
+
+.number-span {
+    color: white;
+}

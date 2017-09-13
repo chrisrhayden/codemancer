@@ -3,17 +3,24 @@
 {% load static %}
 
 {% block vendor %}
-  <link rel="stylesheet" href="{% static 'pages/css/foundation.css' %}">
+  <link rel="stylesheet" href="{% static 'pages/css/railscasts.css' %}">
   <script src="{% static 'pages/js/highlight.pack.js' %}"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+{% block my_style %}
+<link rel="stylesheet" type="text/css" href="{% static 'pages/css/detail.css' %}">
 {% endblock %}
 
 
 {% block first_block %}
   <h2>Code Display</h2>
-  <p>{{ snippet.title }}</p>
-  <pre class="main-box"><code class="{{ snippet.language.first.name|lower }}">
-    {{ snippet.code }}</code></pre>
+  <div class='code-snip'>
+    <h3>{{ snippet.title }}</h3>
+    {% for line in code_lines %}
+      <pre><span class='number-span'>{{ forloop.counter|stringformat:"02d" }}</span><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
+    {% endfor %}
+  </div>
+
 {% endblock %}
 
 {% block second_block %}
@@ -22,8 +29,15 @@
     {% csrf_token %}
 
     {{ form.text }}
+    <p>annotation</p>
+    <div class='ano-code'>
+      {{ ano_form.code }}
+    </div>
+    <div class='ano-line-nums'>
+      {{ ano_form.line_begin }}
+      {{ ano_form.line_end }}
+    </div>
     <p></p><button>Submit</button></p>
-
     <h2>Comments</h2>
     <div class='comments'>
     {% for c in comments %}
@@ -39,3 +53,8 @@
     </div>
   </form>
 {% endblock %}
+
+{% block my_js %}
+  <script src="{% static 'pages/js/detail.js' %}"></script>
+{% endblock %}
+
