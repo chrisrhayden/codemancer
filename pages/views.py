@@ -123,10 +123,12 @@ def snippet_change(request, pk):
     if request.method == 'GET':
         form = SnippetForm(instance=s)
     elif request.method == 'POST':
-        form = SnippetForm(instates=s, data=request.POST)
+        form = SnippetForm(instance=s, data=request.POST)
         if form.is_valid():
             update_snip = form.save(commit=False)
             update_snip.save()
+            return redirect('snippet_detail',
+                            pk=update_snip.id)
 
     s_name = s.title
     context = {'form': form, 'name': s_name}

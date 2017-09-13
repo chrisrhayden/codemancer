@@ -5,7 +5,7 @@ from django.utils import timezone
 from mixer.backend.django import mixer
 from snippets.models import Language, Comment
 from pages.views import (landing_page, login_page,
-                         create_snippet, snippet_detail)
+                         create_snippet, snippet_detail, snippet_change)
 
 
 pytestmark = pytest.mark.django_db
@@ -97,4 +97,34 @@ class TestSnippetDeatail:
 
         com = Comment.objects.get(id=1)
         assert com, 'no comment'
-        assert response.status_code == 200, 'not posting'
+        assert response.status_code == 200, f'response code is {response.status_code}'
+
+
+class TestSnippetChange:
+    def test_view(self):
+
+        obj = mixer.blend('snippets.Snippet')
+        pk = obj.pk
+
+        request = RequestFactory().get('/')
+        response = snippet_change(request, pk)
+
+        assert response.status_code == 200, f'response code {response.status_code}'
+
+    def test_view_post(self):
+
+        obj = mixer.blend('snippets.Snippet')
+
+        lang_data = {'name': 'testish', 'version': 'very first',
+                     'base_doc_url': 'www.superrad.com'}
+
+        lang = Language.objects.create(**lang_data)
+
+        data = {'author': '', 'title': 'this is a title',
+                'code': 'this is code', 'created': timezone.now(),
+                'language': lang.pk}
+
+        request = RequestFactory().post('/', data=data)
+        response = snippet_change(request, obj.pk)
+
+        assert response.status_code == 302, 'response code {response.status_code}'
