@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+from django.utils import timezone
 
 
 # Create your models here.
@@ -52,7 +52,7 @@ class Fourm(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            now = datetime.now()
+            now = timezone.now()
             self.created = now
         super().save(*args, **kwargs)
 
