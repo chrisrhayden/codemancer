@@ -18,7 +18,7 @@ from django.contrib import admin
 from rest_framework import routers
 from pages.views import (
         snippet_detail, login_page, create_snippet,
-        list_snippets, snippet_change, about, landing_page,
+        list_snippets, snippet_change, landing_page,
         LanguageViewSet)
 
 
@@ -34,7 +34,6 @@ urlpatterns = [
     url(r'^pasting/', create_snippet, name='create_snippet'),
     url(r'^list_snips/', list_snippets, name='list_snippets'),
     url(r'^snippet/change/(?P<pk>\d+)', snippet_change, name='snippet_change'),
-    url(r'^about/', about, name='about'),
     url(r'api/v1/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

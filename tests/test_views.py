@@ -4,7 +4,7 @@ from django.test import RequestFactory
 from django.utils import timezone
 from mixer.backend.django import mixer
 from snippets.models import Language, Comment
-from pages.views import (landing_page, login_page,
+from pages.views import (landing_page, login_page, list_snippets,
                          create_snippet, snippet_detail, snippet_change)
 
 
@@ -128,3 +128,15 @@ class TestSnippetChange:
         response = snippet_change(request, obj.pk)
 
         assert response.status_code == 302, 'response code {response.status_code}'
+
+
+class TestListSnippets:
+    def test_view(self):
+
+        obj = mixer.blend('snippets.Snippet')
+        obj_two = mixer.blend('snippets.Snippet')
+
+        request = RequestFactory().post('/')
+        response = list_snippets(request)
+
+        assert response.status_code == 200, f'response code {response.status_code}'

@@ -77,14 +77,6 @@ def list_snippets(request):
     return render(request, 'list_snippets.html', context)
 
 
-def about(request):
-    """ show about page """
-
-    lang = Language.objects.order_by('name')
-    context = {'lang': lang}
-    return render(request, 'about.html', context)
-
-
 def snippet_detail(request, pk):
     """ render the code to page
 
