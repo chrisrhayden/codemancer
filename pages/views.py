@@ -2,7 +2,7 @@ from django.shortcuts import (
         render, redirect,
         get_object_or_404)
 from rest_framework import viewsets
-from snippets.models import (Snippet, Language, Comment)
+from snippets.models import (Snippet, Language, Comment, Annotation)
 from snippets.forms import (SnippetForm, CommentForm, AnnotationForm)
 from snippets.serializers import LanguageSerializer
 
@@ -114,10 +114,11 @@ def snippet_detail(request, pk):
     ano_form = AnnotationForm()
     code_lines = snippet.code.split('\n')
 
-
+    annotations = Annotation.objects.filter(snippet=snippet)
 
     context = {
             'snippet': snippet,
+            'annotations': annotations,
             'code_lines': code_lines,
             'lang': lang,
             'form': form,

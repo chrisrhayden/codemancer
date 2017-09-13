@@ -17,7 +17,13 @@
     <h2 class='page-title'>Code Display</h2>
     <h3>{{ snippet.title }}</h3>
     {% for line in code_lines %}
-      <pre><span class='number-span'>{{ forloop.counter|stringformat:"02d" }}</span><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
+    <pre><span class='number-span'>{{ forloop.counter|stringformat:"02d" }}</span><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
+    {% endfor %}
+  </div>
+
+  <div class='annotations'>
+    {% for ano in annotations %}
+      <p>{{ ano }}</p>
     {% endfor %}
   </div>
 
@@ -29,6 +35,7 @@
     {% csrf_token %}
 
     {{ form.text }}
+
     <p>annotation</p>
     <div class='ano-code'>
       {{ ano_form.code }}
@@ -38,11 +45,12 @@
       {{ ano_form.line_end }}
     </div>
     <p></p><button>Submit</button></p>
+
     <h2>Comments</h2>
     <div class='comments'>
     {% for c in comments %}
         {% if c.author %}
-          <p>{{ c.author }}</p>
+          <p>{{ c.author }}
         {% else %}
           <p>anon
         {% endif %}
