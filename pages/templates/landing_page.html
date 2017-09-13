@@ -42,7 +42,9 @@
 
   <div class='code-snip'>
     <h2>Most recent snippet</h2>
-    <pre><code class='code-line'>{{ code_lines }}</code></pre>
+    {% for line in code_lines %}
+  <pre><span class='number-span'>{{ forloop.counter|stringformat:"02d" }}</span><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
+    {% endfor %}
   </div>
 
 {% endblock %}

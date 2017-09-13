@@ -1,7 +1,4 @@
-
-
 .first-section {
-
     grid-area: main;
 
     display: grid;
@@ -14,6 +11,9 @@
 
 .page-head {
     display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .landing-text {
@@ -24,11 +24,22 @@
 .black-object {
     grid-area: head;
 
+    margin: 0 0 0 20%;
     background-color: black;
+    color: white;
     width: 40%;
-    height: 30%;
+    height: 60%;
 }
 
 .section-section {
     grid-area: snip;
+}
+.code-snip {
+    padding: 0 0 0 10px;
+    max-width: 800px;
+    background-color: #EEE;
+}
+
+.hljs {
+    display: inline;
 }

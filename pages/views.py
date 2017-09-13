@@ -18,7 +18,7 @@ def landing_page(request):
     if comment:
         comment = comment.latest('created')
 
-    code_lines = latest.code
+    code_lines = latest.code.split('\n')
 
     context = {
             'latest': latest,
@@ -53,6 +53,15 @@ def create_snippet(request):
         form = SnippetForm(data=request.POST)
         if form.is_valid():
             snip_post = form.save(commit=False)  # return instates
+
+#            code_list = list()
+#            code = snip_post.code.split('\n')
+#            for i, line in enumerate(code, 1):
+#                this = f'{i}'.zfill(2) + ' ' + line
+#                code_list.append(this)
+#
+#            snip_post.code = '\n'.join(code_list)
+
             snip_post.save()                     # now save
             form.save_m2m()
             # send to display view (below)
