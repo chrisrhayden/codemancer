@@ -5,13 +5,27 @@ function makeTags(tag) {
 
     let $li = $('<li>');
     let $a = $('<a>').text(tag).css({
-        'color': 'white',
+        'color': 'black',
         'text-decoration': 'none',
     });
     let made_tag = $li.append($a);
     return made_tag;
 }
 
+function navSlide() {
+    // make na
+    let $button = $('.slide');
+    let state = $.data($button, 'state');
+
+    $('.slide').on('click', function() {
+        alert(state);
+        if (state === 'out') {
+            $('header').css({
+                'display': 'none'
+            });
+        }
+    });
+}
 
 $(document).ready(function() {
     $.ajax({
@@ -28,4 +42,6 @@ $(document).ready(function() {
             alert(err);
         }
     });
+
+    navSlide();
 });

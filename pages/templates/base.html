@@ -17,7 +17,7 @@
 
 <body>
   <header>
-    <h1>Codemancer</h1>
+    <h1 class='head-title'>CODEMANCER</h1>
     <nav class='header-nav'>
       <ul>
         <li><a href='http://127.0.0.1:8000/pasting/'>Paste Snippet</a></li>
@@ -27,10 +27,15 @@
       </ul>
     </nav>
 
+
+    <p class='tag-title'>Tags</p>
+    <ul class='ul-tags'>
+    </ul>
+
   </header>
 
-
-  <section class='main'>
+  <!-- first -->
+  <section class='first-section'>
     {% block first_block %}
     {% endblock %}
 
@@ -43,12 +48,8 @@
     {% endblock %}
   </section>
 
-  <div class='side-tags'>
-    <p>Tags</p>
-    <ul class='ul-tags'>
-    </ul>
-  </div><!-- side-nav -->
 
+  <button class='slide' data-state='out'>Slide</button>
 
   <!-- vendor -->
   <script
