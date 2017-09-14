@@ -4,7 +4,7 @@ from django.shortcuts import (
 from rest_framework import viewsets
 from snippets.models import (Snippet, Language, Comment, Annotation)
 from snippets.forms import (SnippetForm, CommentForm, AnnotationForm)
-from snippets.serializers import LanguageSerializer
+from snippets.serializers import LanguageSerializer, AnnotationSerializer
 
 # Create your views here.
 
@@ -39,6 +39,13 @@ class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Language.objects.all().order_by('name')
     serializer_class = LanguageSerializer
+
+
+class AnnotationViewSet(viewsets.ModelViewSet):
+    """ for api """
+
+    queryset = Annotation.objects.all()
+    serializer_class = AnnotationSerializer
 
 
 def login_page(request):

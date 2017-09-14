@@ -13,7 +13,7 @@
 
 
 {% block first_block %}
-  <div class='code-snip'>
+<div class='code-snip' data-pk='{{ snippet.id }}'>
     <h2 class='page-title'>Code Display</h2>
     <h3>{{ snippet.title }}</h3>
     {% for line in code_lines %}
@@ -36,9 +36,9 @@
 
     {{ form.text }}
 
-    <p></p><button>Submit</button></p>
+    <p><button>Submit</button></p>
   </form>
-  <form action='' method='POST'>
+  <form action='' method='POST' id='ano-form'>
     {% csrf_token %}
     <p>annotation</p>
     <div class='ano-code'>
@@ -48,7 +48,7 @@
       {{ ano_form.line_begin }}
       {{ ano_form.line_end }}
     </div>
-    <p></p><button>Submit</button></p>
+    <p><button class='ano-submit'>Submit</button></p>
   </form>
 
   <h2>Comments</h2>

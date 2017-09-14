@@ -19,11 +19,12 @@ from rest_framework import routers
 from pages.views import (
         snippet_detail, login_page, create_snippet,
         list_snippets, snippet_change, landing_page,
-        LanguageViewSet)
+        LanguageViewSet, AnnotationViewSet)
 
 
 router = routers.DefaultRouter()
 router.register(r'tags', LanguageViewSet)
+router.register(r'anos', AnnotationViewSet)
 
 # create
 urlpatterns = [
