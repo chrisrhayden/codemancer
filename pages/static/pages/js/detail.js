@@ -7,6 +7,7 @@ $(document).ready(function() {
         let $code_span = $($chiliins[0]);
         let $code_code = $($chiliins[1]);
         let $line_num = $code_code.attr('data-line');
+
         if (two_click === 0) {
             $('#id_line_begin').val(Number($line_num));
             two_click = 1;
@@ -21,14 +22,15 @@ $(document).ready(function() {
     $('.ano-submit').on('click', function(evt) {
         evt.preventDefault();
         let url = '/api/v1/anos/';
-        let code = $('#id_code').val();
-        let line_begin = $('#id_line_begin').val();
-        let line_end = $('#id_line_end').val();
+        let $code = $('#id_code');
+        let $line_begin = $('#id_line_begin');
+        let $line_end = $('#id_line_end');
         let snip = $('.code-snip').attr('data-pk');
+
         let form_data = {
-            'code': code,
-            'line_begin': line_begin,
-            'line_end': line_end,
+            'code': $code.val(),
+            'line_begin': $line_begin.val(),
+            'line_end': $line_end.val(),
             'snippet': snip
         };
         let myHeader = {
@@ -40,7 +42,16 @@ $(document).ready(function() {
             body: JSON.stringify(form_data),
             headers: myHeader,
         };
-        fetch(url, myInit);
+
+        fetch(url, myInit).then(function(response) {
+            $code.val('');
+            $line_begin.val('');
+            $line_end.val('');
+            return response.json();
+        }).then(function(data) {
+            let new_ano = $('<p>').text(data.code);
+            $('.annotations').append(new_ano);
+        });
     });
 
 });

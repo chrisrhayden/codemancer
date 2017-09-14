@@ -23,7 +23,7 @@
 
   <div class='annotations'>
     {% for ano in annotations %}
-      <p>{{ ano }}</p>
+      <p>{{ ano.code }}</p>
     {% endfor %}
   </div>
 
@@ -66,14 +66,6 @@
   </div>
 {% endblock %}
 
-{% block other_block %}
-  {% for ano in annotations %}
-  <p>{{ ano }}</p>
-  {% endfor %}
-{% endblock %}
-
-
 {% block my_js %}
   <script src="{% static 'pages/js/detail.js' %}"></script>
 {% endblock %}
-
