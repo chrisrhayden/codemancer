@@ -16,7 +16,6 @@ def landing_page(request):
     comment = Comment.objects.filter(snippet=latest)
     code_lines = latest.code.split('\n')
 
-
     if comment:
         comment = comment.latest('created')
         context = {
@@ -31,7 +30,6 @@ def landing_page(request):
                 'code_lines': code_lines,
                 'comment_form': comment_form,
         }
-
 
     return render(request, 'landing_page.html', context)
 
@@ -98,10 +96,7 @@ def snippet_detail(request, pk):
 
     # old code for posterity
     # snippet = Snippet.objects.get(id=pk)
-
     snippet = get_object_or_404(Snippet, id=pk)
-    lang = Language.objects.order_by('name')
-    comments = Comment.objects.filter(snippet=snippet)
 
     if request.method == 'POST':
         form = CommentForm(data=request.POST)
@@ -110,17 +105,18 @@ def snippet_detail(request, pk):
             new_comment.snippet = snippet
             new_comment.save()
 
-    form = CommentForm()
-    ano_form = AnnotationForm()
     code_lines = snippet.code.split('\n')
 
+    comments = Comment.objects.filter(snippet=snippet)
     annotations = Annotation.objects.filter(snippet=snippet)
+
+    form = CommentForm()
+    ano_form = AnnotationForm()
 
     context = {
             'snippet': snippet,
             'annotations': annotations,
             'code_lines': code_lines,
-            'lang': lang,
             'form': form,
             'ano_form': ano_form,
             'comments': comments,

@@ -15,13 +15,15 @@ function makeTags(tag) {
 function navSlide() {
     // make na
     let $button = $('.slide');
-    let state = $.data($button, 'state');
+    let state = $button.attr('data-state');
 
     $('.slide').on('click', function() {
-        alert(state);
         if (state === 'out') {
             $('header').css({
                 'display': 'none'
+            });
+            $('body').css({
+                'grid-template-columns': '0px auto'
             });
         }
     });

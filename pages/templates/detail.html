@@ -36,6 +36,10 @@
 
     {{ form.text }}
 
+    <p></p><button>Submit</button></p>
+  </form>
+  <form action='' method='POST'>
+    {% csrf_token %}
     <p>annotation</p>
     <div class='ano-code'>
       {{ ano_form.code }}
@@ -45,9 +49,10 @@
       {{ ano_form.line_end }}
     </div>
     <p></p><button>Submit</button></p>
+  </form>
 
-    <h2>Comments</h2>
-    <div class='comments'>
+  <h2>Comments</h2>
+  <div class='comments'>
     {% for c in comments %}
         {% if c.author %}
           <p>{{ c.author }}
@@ -56,11 +61,17 @@
         {% endif %}
           said</p>
 
-        <p>{{ c.text }}</p>
+          <p>{{ c.text }}</p>
     {% endfor %}
-    </div>
-  </form>
+  </div>
 {% endblock %}
+
+{% block other_block %}
+  {% for ano in annotations %}
+  <p>{{ ano }}</p>
+  {% endfor %}
+{% endblock %}
+
 
 {% block my_js %}
   <script src="{% static 'pages/js/detail.js' %}"></script>
