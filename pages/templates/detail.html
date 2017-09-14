@@ -13,12 +13,14 @@
 
 
 {% block first_block %}
-<div class='code-snip' data-pk='{{ snippet.id }}'>
+  <div class='code-snip' data-pk='{{ snippet.id }}'>
     <h2 class='page-title'>Code Display</h2>
     <h3>{{ snippet.title }}</h3>
-    {% for line in code_lines %}
-    <pre><span class='number-span'>{{ forloop.counter|stringformat:"02d" }}</span><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
-    {% endfor %}
+    <table>
+      {% for line in code_lines %}
+      <tr><td class='line-number'>{{ forloop.counter }}</td><td><pre class='code-pre'><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre></td></tr>
+      {% endfor %}
+    </table>
   </div>
 
   <div class='annotations'>

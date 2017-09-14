@@ -14,8 +14,9 @@
     background-color: #232323;
     color: white;
 
+    max-width: 800px;
+    overflow-x: scroll;
     padding: 10px;
-    max-width: 750px;
 }
 
 .number-span {
