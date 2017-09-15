@@ -3,9 +3,6 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
-# Create your models here.
-
-
 class Language(models.Model):
     """ language model
 

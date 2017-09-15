@@ -19,22 +19,23 @@ from rest_framework import routers
 from pages.views import (
         snippet_detail, login_page, create_snippet,
         list_snippets, snippet_change, landing_page,
-        LanguageViewSet, AnnotationViewSet)
+        LanguageViewSet, AnnotationViewSet, CommentViewSet)
 
 
 router = routers.DefaultRouter()
 router.register(r'tags', LanguageViewSet)
 router.register(r'anos', AnnotationViewSet)
+router.register(r'comms', CommentViewSet)
 
 # create
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', landing_page, name='landing_page'),
-    url(r'^detail/(?P<pk>\d+)', snippet_detail, name='snippet_detail'),
+    url(r'^admin/', admin.site.urls),
     url(r'^login/', login_page, name='login_page'),
     url(r'^pasting/', create_snippet, name='create_snippet'),
-    url(r'^list_snips/', list_snippets, name='list_snippets'),
+    url(r'^listsnips/', list_snippets, name='list_snippets'),
+    url(r'^detail/(?P<pk>\d+)', snippet_detail, name='snippet_detail'),
     url(r'^snippet/change/(?P<pk>\d+)', snippet_change, name='snippet_change'),
-    url(r'api/v1/', include(router.urls)),
+    url(r'^api/v1/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

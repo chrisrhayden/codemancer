@@ -8,7 +8,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 {% block my_style %}
-<link rel="stylesheet" type="text/css" href="{% static 'pages/css/detail.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'pages/css/detail.css' %}">
 {% endblock %}
 
 
@@ -30,6 +30,9 @@
     </table>
   </div>
 
+  <div id='ano-display'>
+  </div>
+
   <div class='annotations'>
     {% for ano in annotations %}
       <p>{{ ano.code }}</p>
@@ -38,30 +41,26 @@
 
 {% endblock %}
 
+
+
 {% block second_block %}
-  <form action='' method='POST'>
-    <h3>add a comment</h3>
+  <form action='' method='POST' id='com-ano-form'>
     {% csrf_token %}
-
-    {{ form.text }}
-
-    <p><button>Submit</button></p>
-  </form>
-  <form action='' method='POST' id='ano-form'>
-    {% csrf_token %}
-    <p>annotation</p>
-    <div class='ano-code'>
+    <div id='comment-text'>
+      {{ form.text }}
+    </div>
+    <div id='annotation-code'>
       {{ ano_form.code }}
     </div>
     <div class='ano-line-nums'>
       {{ ano_form.line_begin }}
       {{ ano_form.line_end }}
     </div>
-    <p><button class='ano-submit'>Submit</button></p>
+    <p><button class='com-ano-submit'>Submit</button></p>
   </form>
 
-  <h2>Comments</h2>
-  <div class='comments'>
+  <div id='comments'>
+    <h2>Comments</h2>
     {% for c in comments %}
         {% if c.author %}
           <p>{{ c.author }}
