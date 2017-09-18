@@ -14,15 +14,14 @@
 
 {% block first_block %}
   <div id='page-head'>
-    <h2 class='page-title'>Code Display</h2>
+    <h1>{{ snippet.title }}</h1>
   </div>
 
   <div class='code-snip' data-pk='{{ snippet.id }}'>
-    <h3>{{ snippet.title }}</h3>
     <table>
       {% for line in code_lines %}
         <tr class='code-row'>
-          <td class='line-number'>{{ forloop.counter }}</td>
+          <td class='line-number' id='ano-{{ forloop.counter }}'>{{ forloop.counter }}</td>
           <td><pre class='code-pre'><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
           </td>
         </tr>
@@ -30,14 +29,6 @@
     </table>
   </div>
 
-  <div id='ano-display'>
-  </div>
-
-  <div class='annotations'>
-    {% for ano in annotations %}
-      <p>{{ ano.code }}</p>
-    {% endfor %}
-  </div>
 
 {% endblock %}
 
@@ -74,6 +65,15 @@
   </div>
 {% endblock %}
 
+{% block other_content %}
+   {% for ano in annotations %}
+     <p class='annotations' id='{{ ano.line_begin }}'>{{ ano.code }}</p>
+   {% endfor %}
+{% endblock %}
+
+
+
 {% block my_js %}
   <script src="{% static 'pages/js/detail.js' %}"></script>
+  <script src="{% static 'pages/js/ano.js' %}"></script>
 {% endblock %}
