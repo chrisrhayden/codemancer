@@ -4,7 +4,7 @@ function makeAnno(annotation, line_number) {
 
     let $ano_row = $('<tr>', {
         'class': 'annotation_row',
-        'id': `ano-line-${line_number}`,
+        'data-row': `${line_number}`,
         'data-display': 'hide'
     }).css({
         'display': 'none'
@@ -12,7 +12,7 @@ function makeAnno(annotation, line_number) {
 
     let spanish = $('<span>').text('-');
 
-    let new_td = $('<td>').append('x', spanish);
+    let new_td = $('<td>').append(spanish);
 
     $ano_row.append(new_td);
 
@@ -22,7 +22,7 @@ function makeAnno(annotation, line_number) {
 
     $ano_row.append($ano_td);
 
-    $(`#row-${line_number}`).before($ano_row);
+    $(`#line-${line_number}`).before($ano_row);
 
 }
 
@@ -32,7 +32,7 @@ function showAnnoCount() {
 
     for (let i=0;i < all_annos.length;i++) {
         let annotation = all_annos[i];
-        let line_number = all_annos[i].getAttribute('id').slice(4);
+        let line_number = $(annotation).attr('data-row');
 
         let $row_line = $(`#line-${line_number}`);
 
@@ -50,7 +50,6 @@ function showAnnoCount() {
         if (chil.length > 0) {
             chil.text(ano_count[line_number]);
         } else {
-
             let tool_text = $('<span>', {
                 'class': 'tooltext'
             }).text(`${ano_count[line_number]}`);
@@ -89,10 +88,9 @@ function showAnnoCount() {
 
 function setClickListen() {
     $('.line-number').on('click', function() {
+        let line_number = $(this).attr('data-line');
 
-        let line_number = $(this).attr('id').slice(5);
-
-        $(`.annotations, #ano-line-${line_number}`).css({
+        $(`tr[data-row=${line_number}], tr[data-row=${line_number}] .annotations`).css({
             'display': 'table-row'
         });
     });

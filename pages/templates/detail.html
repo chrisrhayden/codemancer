@@ -14,14 +14,14 @@
 
 {% block first_block %}
   <div id='page-head'>
-    <h1>{{ snippet.title }}</h1>
+    <h1>{{ snippet.title }} </h1><p>{% for tag in snippet.language.all %}{{ tag }}{% endfor %}</p>
   </div>
 
   <div class='code-snip' data-pk='{{ snippet.id }}'>
     <table>
       {% for line in code_lines %}
-        <tr class='code-row' id='row-{{ forloop.counter }}'>
-          <td class='line-number' id='line-{{ forloop.counter }}'>{{ forloop.counter }}</td>
+        <tr class='code-row' id='line-{{ forloop.counter }}'>
+          <td class='line-number' data-line='{{ forloop.counter }}'>{{ forloop.counter }}</td>
           <td><pre class='code-pre'><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
           </td>
         </tr>
@@ -67,7 +67,7 @@
 
 {% block other_content %}
    {% for ano in annotations %}
-     <pre class='annotations' id='ano-{{ ano.line_begin }}'><code>{{ ano.code }}</code></pre>
+     <pre class='annotations' data-row='{{ ano.line_begin }}'><code>{{ ano.code }}</code></pre>
    {% endfor %}
 {% endblock %}
 
