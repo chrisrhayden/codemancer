@@ -2,34 +2,33 @@
 
 function showAnnos() {
     let all_annos = $('.annotations').toArray();
-    let line_nums = {};
+    let ano_count = {};
 
     for (let i=0;i < all_annos.length;i++) {
-        let line = all_annos[i].getAttribute('id');
+        let line_number = all_annos[i].getAttribute('id').slice(4);
 
-        let $ano_line = $(`#ano-${line}`);
+        let $row_line = $(`#line-${line_number}`);
 
-        if (line in line_nums) {
-            line_nums[line] += 1;
+        if (line_number in ano_count) {
+            ano_count[line_number] += 1;
         } else {
-            line_nums[line] = 1;
+            ano_count[line_number] = 1;
         }
 
-        $ano_line.css({
+        $row_line.css({
             'color': 'green'
         });
 
-
-        let chil = $ano_line.children('span');
+        let chil = $row_line.children('span');
         if (chil.length > 0) {
-            chil.text(line_nums[line]);
+            chil.text(ano_count[line_number]);
         } else {
 
             let tool_text = $('<span>', {
                 'class': 'tooltext'
-            }).text(`${line_nums[line]}`);
+            }).text(`${ano_count[line_number]}`);
 
-            $ano_line.append(tool_text);
+            $row_line.append(tool_text);
 
             tool_text.css({
                 'display': 'inline-block',
@@ -39,11 +38,11 @@ function showAnnos() {
                 'background-color': 'black',
                 'color': 'white',
                 'width': '20px',
-                'padding': '0 0 0 5px',
+                'padding': '0 0 0 10px',
 
             });
 
-            $ano_line.hover(function() {
+            $row_line.hover(function() {
                 $(tool_text).css({
                     'visibility': 'visible',
                     'opacity': '1'
