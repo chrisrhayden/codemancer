@@ -46,15 +46,15 @@ function showAnnoCount() {
             'color': 'green'
         });
 
-        let chil = $row_line.children('span');
+        let chil = $row_line.children().first().children('span');
+
         if (chil.length > 0) {
             chil.text(ano_count[line_number]);
+
         } else {
             let tool_text = $('<span>', {
                 'class': 'tooltext'
             }).text(`${ano_count[line_number]}`);
-
-            $row_line.append(tool_text);
 
             tool_text.css({
                 'display': 'inline-block',
@@ -79,6 +79,8 @@ function showAnnoCount() {
                     'opacity': '1'
                 });
             });
+
+            $row_line.children().first().append(tool_text);
         } // the else
 
         makeAnno(annotation, line_number);
@@ -90,7 +92,7 @@ function setClickListen() {
     $('.line-number').on('click', function() {
         let line_number = $(this).attr('data-line');
 
-        $(`tr[data-row=${line_number}], tr[data-row=${line_number}] .annotations`).css({
+        $(`tr[data-row=${line_number}]:first, tr[data-row=${line_number}] .annotations:first`).css({
             'display': 'table-row'
         });
     });
