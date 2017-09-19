@@ -1,10 +1,37 @@
 'use strict';
 
-function showAnnos() {
+function makeAnno(annotation, line_number) {
+
+    let $ano_row = $('<tr>', {
+        'class': 'annotation_row',
+        'id': `ano-line-${line_number}`,
+        'data-display': 'hide'
+    }).css({
+        'display': 'none'
+    });
+
+    let spanish = $('<span>').text('-');
+
+    let new_td = $('<td>').append('x', spanish);
+
+    $ano_row.append(new_td);
+
+    let $ano_td = $('<td>');
+
+    $ano_td.html(annotation);
+
+    $ano_row.append($ano_td);
+
+    $(`#row-${line_number}`).before($ano_row);
+
+}
+
+function showAnnoCount() {
     let all_annos = $('.annotations').toArray();
     let ano_count = {};
 
     for (let i=0;i < all_annos.length;i++) {
+        let annotation = all_annos[i];
         let line_number = all_annos[i].getAttribute('id').slice(4);
 
         let $row_line = $(`#line-${line_number}`);
@@ -54,9 +81,25 @@ function showAnnos() {
                 });
             });
         } // the else
+
+        makeAnno(annotation, line_number);
     } // the for loop
+
+}
+
+function setClickListen() {
+    $('.line-number').on('click', function() {
+
+        let line_number = $(this).attr('id').slice(5);
+
+        $(`.annotations, #ano-line-${line_number}`).css({
+            'display': 'table-row'
+        });
+    });
 }
 
 $(document).ready(function() {
-    showAnnos();
+    showAnnoCount();
+
+    setClickListen();
 });

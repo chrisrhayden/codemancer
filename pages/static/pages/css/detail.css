@@ -45,10 +45,11 @@
     font-family: monospace, monospace;
 }
 
+#com-ano-form {
+    grid-area: form;
+}
+
 .annotations {
     display: none;
 }
 
-#com-ano-form {
-    grid-area: form;
-}

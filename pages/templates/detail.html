@@ -20,7 +20,7 @@
   <div class='code-snip' data-pk='{{ snippet.id }}'>
     <table>
       {% for line in code_lines %}
-        <tr class='code-row'>
+        <tr class='code-row' id='row-{{ forloop.counter }}'>
           <td class='line-number' id='line-{{ forloop.counter }}'>{{ forloop.counter }}</td>
           <td><pre class='code-pre'><code data-line='{{ forloop.counter }}'>{{ line }}</code></pre>
           </td>
