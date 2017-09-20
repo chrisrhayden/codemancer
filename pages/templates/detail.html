@@ -40,9 +40,6 @@
     <div id='comment-text'>
       {{ form.text }}
     </div>
-    <div id='annotation-code'>
-      {{ ano_form.code }}
-    </div>
     <div class='ano-line-nums'>
       {{ ano_form.line_begin }}
       {{ ano_form.line_end }}
@@ -66,6 +63,12 @@
 {% endblock %}
 
 {% block other_content %}
+  <form action='' method='POST' id='ano-form'>
+    <div id='annotation-code'>
+      {{ ano_form.code }}
+    </div>
+  </form>
+
    {% for ano in annotations %}
      <pre class='annotations' data-row='{{ ano.line_begin }}'><code>{{ ano.code }}</code></pre>
    {% endfor %}

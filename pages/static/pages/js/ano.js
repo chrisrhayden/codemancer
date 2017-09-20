@@ -88,7 +88,7 @@ function showAnnoCount() {
 
 }
 
-function setClickListen() {
+function setAnoClickListen() {
     $('.line-number').on('click', function() {
         let line_number = $(this).attr('data-line');
 
@@ -98,8 +98,29 @@ function setClickListen() {
     });
 }
 
+function setAnoWrite() {
+    $('.line-number').on('click', function() {
+        let line_number = $(this).attr('data-line')
+
+        let $ano_row = $('<tr>');
+        let $ano_first_td = $('<td>');
+
+        $ano_row.append($ano_first_td);
+
+        let $ano_td = $('<td>');
+
+        let $ano_box = $('#ano-form');
+
+        $ano_td.append($ano_box);
+
+        $ano_row.append($ano_td);
+        $(`#line-${line_number}`).before($ano_row);
+    });
+}
+
 $(document).ready(function() {
     showAnnoCount();
 
-    setClickListen();
+    setAnoClickListen();
+    setAnoWrite();
 });
