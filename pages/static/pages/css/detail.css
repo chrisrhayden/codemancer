@@ -66,5 +66,9 @@
 
 #ano-submit {
     width: 20px;
+    border: 0;
+    padding: 5px 10px 5px 5px;
+    height: 9.5em;
+    background-color: white;
 }
 

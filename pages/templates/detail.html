@@ -62,12 +62,13 @@
 {% block other_content %}
   <form action='' method='POST' id='ano-form'>
     <div id='annotation-code'>
-      <p>{{ ano_form.code }}</p>
-      {{ ano_form.line_begin }}
-      {{ ano_form.line_end }}
+      <p>{{ ano_form.code }}
+         <button id='ano-submit' class='com-ano-submit'>
+           A&#10;n&#10;n&#10;o&#10;t&#10;a&#10;t&#10;e</button>
+      </p>
+      <p>{{ ano_form.line_begin }}
+      {{ ano_form.line_end }}</p>
     </div>
-    <!-- TODO -->
-    <button id='ano-submit' class='com-ano-submit'>A&#10;n&#10;n&#10;o&#10;t&#10;a&#10;t&#10;e</button>
   </form>
 
    {% for ano in annotations %}
