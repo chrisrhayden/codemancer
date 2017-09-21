@@ -35,15 +35,12 @@
 
 
 {% block second_block %}
-  <form action='' method='POST' id='com-ano-form'>
+  <form action='' method='POST' id='com-form'>
     {% csrf_token %}
     <div id='comment-text'>
       {{ form.text }}
     </div>
-    <div class='ano-line-nums'>
-      {{ ano_form.line_begin }}
-      {{ ano_form.line_end }}
-    </div>
+
     <p><button class='com-ano-submit'>Submit</button></p>
   </form>
 
@@ -65,8 +62,12 @@
 {% block other_content %}
   <form action='' method='POST' id='ano-form'>
     <div id='annotation-code'>
-      {{ ano_form.code }}
+      <p>{{ ano_form.code }}</p>
+      {{ ano_form.line_begin }}
+      {{ ano_form.line_end }}
     </div>
+    <!-- TODO -->
+    <button id='ano-submit' class='com-ano-submit'>A&#10;n&#10;n&#10;o&#10;t&#10;a&#10;t&#10;e</button>
   </form>
 
    {% for ano in annotations %}

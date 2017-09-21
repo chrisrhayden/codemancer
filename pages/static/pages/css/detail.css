@@ -45,7 +45,7 @@
     font-family: monospace, monospace;
 }
 
-#com-ano-form {
+#com-form {
     grid-area: form;
 }
 
@@ -56,3 +56,15 @@
 .second-section {
     display: none;
 }
+
+#ano-form {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: flex-start;
+}
+
+#ano-submit {
+    width: 20px;
+}
+

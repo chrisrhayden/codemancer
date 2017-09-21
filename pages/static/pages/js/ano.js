@@ -1,36 +1,91 @@
 'use strict';
 
+function makeAnoWriter() {
+    let $ano_row = $('<tr>', {
+        'id': 'ano-form-tr',
+        'data-state': 'off'
+    });
+
+    let $ano_first_td = $('<td>');
+
+    $ano_row.append($ano_first_td);
+
+    let $ano_td = $('<td>');
+
+    let $ano_box = $('#ano-form');
+
+    $ano_td.append($ano_box);
+
+    $ano_row.append($ano_td);
+
+    $('.second-section').append($ano_row);
+}
+
+
+function setAnoWriterListen() {
+    $('.line-number').on('click', function() {
+        let line_number = $(this).attr('data-line');
+        let if_ano_siblings_eq_zero = $(`#line-${line_number}`)
+            .prev('.annotation_row').length === 0;
+
+        if (if_ano_siblings_eq_zero) {
+            let $ano_row = $('#ano-form-tr');
+
+            $(`#line-${line_number}`).before($ano_row);
+        }
+    });
+}
+
 function makeAnno(annotation, line_number) {
+    // part of makeAnoRow()
+    // make table sructer
+    // add style and attrs
+    // add to table with display none
 
     let $ano_row = $('<tr>', {
         'class': 'annotation_row',
         'data-row': `${line_number}`,
-        'data-display': 'hide',
-        'line-height': '1.15',
-        'padding': '0.5em'
+        'data-display': 'hide'
     }).css({
         'color': 'black',
         'background-color': 'white',
-        'display': 'none'
+        'display': 'none',
+        'line-height': '30px',
+        'padding': '0.5em'
     });
 
+    // change background to white
+    // TODO find a better code highlight
     $(annotation).children('code').css({
         'color': 'black',
         'background-color': 'white'
     });
 
+    // make two spans
+    // the - closes the ano
+    // the + opens ano writer
+    // append both to a <td>
     let spanish = $('<span>').text('-').on('click', function() {
         $ano_row.css({
             'display': 'none'
         });
     });
 
-    let espanol = $('<span>').text('+');
+    let espanol = $('<span>').text('+').on('click', function() {
+        setAnoWriterListen();
+    });
 
-    let new_td = $('<td>').append(spanish, espanol);
+    // append both <span>'s to a <td>
+    let open_close_td = $('<td>').append(spanish, espanol).css({
+        'display': 'flex',
+        'flex-flow': 'column',
+    });
 
-    $ano_row.append(new_td);
+    $ano_row.append(open_close_td);
 
+    // make a <td>
+    // add the annotation
+    // add above the line user clicks
     let $ano_td = $('<td>');
 
     $ano_td.html(annotation);
@@ -38,10 +93,20 @@ function makeAnno(annotation, line_number) {
     $ano_row.append($ano_td);
 
     $(`#line-${line_number}`).before($ano_row);
-
 }
 
-function showAnnoCount() {
+function setAnoClickListen() {
+    $('.line-number').on('click', function() {
+        let line_number = $(this).attr('data-line');
+
+        $(`tr[data-row=${line_number}]:first,
+            tr[data-row=${line_number}] .annotations:first`).css({
+            'display': 'table-row'
+        });
+    });
+}
+
+function makeAnoRow() {
     let all_annos = $('.annotations').toArray();
     let ano_count = {};
 
@@ -100,49 +165,15 @@ function showAnnoCount() {
 
         makeAnno(annotation, line_number);
     } // the for loop
-
 }
 
-function setAnoClickListen() {
-    $('.line-number').on('click', function() {
-        let line_number = $(this).attr('data-line');
-
-        $(`tr[data-row=${line_number}]:first,
-            tr[data-row=${line_number}] .annotations:first`).css({
-            'display': 'table-row'
-        });
-    });
-}
-
-function setAnoWrite() {
-    $('.line-number').on('click', function(evt) {
-        let if_ano_row_gt_zero = $(evt.target)
-            .parents().siblings('.annotation_row').length === 0;
-
-        if (if_ano_row_gt_zero) {
-            let line_number = $(this).attr('data-line');
-
-            let $ano_row = $('<tr>', {'data-state': 'off'});
-            let $ano_first_td = $('<td>');
-
-            $ano_row.append($ano_first_td);
-
-            let $ano_td = $('<td>');
-
-            let $ano_box = $('#ano-form');
-
-            $ano_td.append($ano_box);
-
-            $ano_row.append($ano_td);
-            $(`#line-${line_number}`).before($ano_row);
-        }
-    });
-}
 
 $(document).ready(function() {
-    showAnnoCount();
+    makeAnoRow();
 
     setAnoClickListen();
 
-    setAnoWrite();
+    makeAnoWriter();
+
+    setAnoWriterListen();
 });

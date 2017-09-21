@@ -1,6 +1,5 @@
-$(document).ready(function() {
-    // for detail only
-    'use strict';
+function setLineNumbers() {
+    // TODO PLAES fix
     let two_click = 0;
     $('.line-number').on('click', function() {
         // add line number to anno field
@@ -13,10 +12,23 @@ $(document).ready(function() {
         }
     });
 
+
+}
+
+
+$(document).ready(function() {
+    // for detail only
+    'use strict';
+
+    setLineNumbers();
+
     $('.com-ano-submit').on('click', function(evt) {
+        // POST anos or comments
+        // the if after both funcs is the logic
+
         evt.preventDefault();
 
-        let snip = $('.code-snip').attr('data-pk');
+        let snip_pk = $('.code-snip').attr('data-pk');
         let $text = $('#id_text');
         let $ano_code = $('#id_code');
 
@@ -27,13 +39,14 @@ $(document).ready(function() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         };
+
         function commentPost() {
             // post comment
             let url = '/api/v1/comms/';
 
             let form_data = {
                 'text': comment_text,
-                'snippet': snip
+                'snippet': snip_pk
             };
             let myInit = {
                 method: 'POST',
@@ -54,6 +67,7 @@ $(document).ready(function() {
             let text_array = [auth, com_text];
             $com_div.append(text_array);
         }
+
         function annotationPost() {
             // post annotation
             let url = '/api/v1/anos/';
@@ -64,7 +78,7 @@ $(document).ready(function() {
                 'code': annotation_code,
                 'line_begin': $line_begin.val(),
                 'line_end': $line_end.val(),
-                'snippet': snip
+                'snippet': snip_pk
             };
             let myInit = {
                 method: 'POST',
