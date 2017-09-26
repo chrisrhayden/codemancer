@@ -1,20 +1,3 @@
-function setLineNumbers() {
-    // TODO PLAES fix
-    let two_click = 0;
-    $('.line-number').on('click', function() {
-        // add line number to anno field
-        let line_num = $(this).text();
-        if (two_click === 0) {
-            $('#id_line_begin').val(Number(line_num));
-            two_click = 1;
-        } else {
-            $('#id_line_end').val(Number(line_num));
-        }
-    });
-
-
-}
-
 
 $(document).ready(function() {
     // for detail only

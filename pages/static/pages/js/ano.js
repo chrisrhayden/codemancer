@@ -17,6 +17,22 @@ function showAnoWiter(line_number, ano_plus=false) {
 
 
 function makeAnoWriter() {
+    /* add the number of the line clicked
+     * to the line_begin and line_end box alternating */
+    let two_click = 0;
+    $('.line-number').on('click', function() {
+        // add line number to anno field
+        let line_num = $(this).attr('data-line');
+        if (two_click === 0) {
+            $('#id_line_begin').val(Number(line_num));
+            two_click = 1;
+        } else {
+            $('#id_line_end').val(Number(line_num));
+            two_click = 0;
+        }
+    });
+
+
     let $ano_row = $('<tr>', {
         'id': 'ano-form-tr',
         'data-state': 'off'
@@ -47,10 +63,20 @@ function showAnoCode(line_number, select='default') {
     let $first = $(`tr[data-row=${line_number}]:first,
         tr[data-row=${line_number}] .annotations:first`);
 
+    let end_number = $first.attr('data-end');
+
     if (select === 'default') {
         $first.css({
             'display': 'table-row'
         });
+        if (end_number) {
+            for (let i=line_number;i < end_number;i++) {
+                $(`#line-${i}, #line-${i} pre code`).css({
+                    'background-color': 'grey'
+                });
+            } // the for
+        } // the if
+
     } else if (select === 'forward') {
         let next = $first.siblings('.annotations:nth-child(1)');
         next.css({
@@ -60,24 +86,15 @@ function showAnoCode(line_number, select='default') {
 }
 
 function setAnoClickListen() {
-    /*$('.line-number').on('click', function() {
-        let line_number = $(this).attr('data-line');
-        if (select === 'default') {
-            $(`tr[data-row=${line_number}]:first,
-                tr[data-row=${line_number}] .annotations:first`).css({
-                'display': 'table-row'
-            });
-        }
-    });*/
-
     $('.line-number').on('click', function() {
         let line_number = $(this).attr('data-line');
+
         showAnoCode(line_number);
     });
 }
 
 
-function makeAnnoCode(annotation, line_number) {
+function makeAnnoCode(annotation, line_number, end_number) {
     /* part of makeAnoRow()
        make table sructer
        add style and attrs
@@ -86,6 +103,7 @@ function makeAnnoCode(annotation, line_number) {
     let $ano_row = $('<tr>', {
         'class': 'annotation_row',
         'data-row': `${line_number}`,
+        'data-end': `${end_number}`,
         'data-display': 'hide'
     }).css({
         'color': 'black',
@@ -173,6 +191,7 @@ function makeAnoRow() {
     for (let i=0;i < all_annos.length;i++) {
         let annotation = all_annos[i];
         let line_number = $(annotation).attr('data-row');
+        let end_number = $(annotation).attr('data-end');
 
         let $row_line = $(`#line-${line_number}`);
 
@@ -205,7 +224,6 @@ function makeAnoRow() {
                 'color': 'white',
                 'width': '20px',
                 'padding': '0 0 0 10px',
-
             });
 
             $row_line.hover(function() {
@@ -225,7 +243,7 @@ function makeAnoRow() {
 
         } // the if else statement end
 
-        makeAnnoCode(annotation, line_number);
+        makeAnnoCode(annotation, line_number, end_number);
     } // the for loop end
 }
 

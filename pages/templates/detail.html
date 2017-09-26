@@ -72,7 +72,7 @@
   </form>
 
    {% for ano in annotations %}
-     <pre class='annotations' data-row='{{ ano.line_begin }}'><code>{{ ano.code }}</code></pre>
+     <pre class='annotations' data-end='{{ ano.line_end }}' data-row='{{ ano.line_begin }}'><code>{{ ano.code }}</code></pre>
    {% endfor %}
 {% endblock %}
 
